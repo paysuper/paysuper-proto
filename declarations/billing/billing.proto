@@ -16,7 +16,7 @@ message Name {
 message OrderCreateRequest {
     // @inject_tag: query:"PO_PROJECT_ID" form:"PO_PROJECT_ID" json:"project"  validate:"omitempty,hexadecimal" required:"true"
     //
-    // The ID of the Project found in your merchant account in the PaySuper Dashboard.
+    // The ID of the Project found in your merchant account in the PaySuper Dashboard.    
     string project_id = 1;
     // @inject_tag: query:"PO_SIGNATURE" form:"PO_SIGNATURE" json:"-" validate:"omitempty,alphanum"
     string signature = 2;
