@@ -1156,15 +1156,15 @@ message Refund {
 }
 
 message MerchantPaymentMethodHistory {
-    // @inject_tag: validate:"required,hexadecimal,len=24"
+    // @inject_tag: validate:"required,hexadecimal,len=24" faker:"objectIdString"
     string id = 1;
-    // @inject_tag: validate:"required,hexadecimal,len=24"
+    // @inject_tag: validate:"required,hexadecimal,len=24" faker:"objectIdString"
     string merchant_id = 2;
     // @inject_tag: validate:"required"
     MerchantPaymentMethod paymentMethod = 3;
     // @inject_tag: json:"created_at" validate:"required"
     google.protobuf.Timestamp created_at = 4;
-    // @inject_tag: validate:"required,hexadecimal,len=24"
+    // @inject_tag: validate:"required,hexadecimal,len=24" faker:"objectIdString"
     string user_id = 5;
 }
 
