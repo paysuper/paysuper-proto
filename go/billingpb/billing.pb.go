@@ -5960,16 +5960,16 @@ func (m *Refund) GetCreatedOrderId() string {
 }
 
 type MerchantPaymentMethodHistory struct {
-	// @inject_tag: validate:"required,hexadecimal,len=24"
-	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty" validate:"required,hexadecimal,len=24"`
-	// @inject_tag: validate:"required,hexadecimal,len=24"
-	MerchantId string `protobuf:"bytes,2,opt,name=merchant_id,json=merchantId,proto3" json:"merchant_id,omitempty" validate:"required,hexadecimal,len=24"`
+	// @inject_tag: validate:"required,hexadecimal,len=24" faker:"objectIdString"
+	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty" validate:"required,hexadecimal,len=24" faker:"objectIdString"`
+	// @inject_tag: validate:"required,hexadecimal,len=24" faker:"objectIdString"
+	MerchantId string `protobuf:"bytes,2,opt,name=merchant_id,json=merchantId,proto3" json:"merchant_id,omitempty" validate:"required,hexadecimal,len=24" faker:"objectIdString"`
 	// @inject_tag: validate:"required"
 	PaymentMethod *MerchantPaymentMethod `protobuf:"bytes,3,opt,name=paymentMethod,proto3" json:"paymentMethod,omitempty" validate:"required"`
 	// @inject_tag: json:"created_at" validate:"required"
 	CreatedAt *timestamp.Timestamp `protobuf:"bytes,4,opt,name=created_at,json=createdAt,proto3" json:"created_at" validate:"required"`
-	// @inject_tag: validate:"required,hexadecimal,len=24"
-	UserId               string   `protobuf:"bytes,5,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty" validate:"required,hexadecimal,len=24"`
+	// @inject_tag: validate:"required,hexadecimal,len=24" faker:"objectIdString"
+	UserId               string   `protobuf:"bytes,5,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty" validate:"required,hexadecimal,len=24" faker:"objectIdString"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-" bson:"-" structure:"-" validate:"-"`
 	XXX_unrecognized     []byte   `json:"-" bson:"-" structure:"-" validate:"-"`
 	XXX_sizecache        int32    `json:"-" bson:"-" structure:"-" validate:"-"`
