@@ -420,7 +420,7 @@ message MerchantTariff {
 }
 
 message Merchant {
-    // @inject_tag: bson:"_id"
+    // @inject_tag: bson:"_id" faker:"objectIdString"
     string id = 1;
     // @inject_tag: json:"user"
     MerchantUser user = 2;
