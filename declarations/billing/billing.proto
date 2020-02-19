@@ -499,7 +499,7 @@ message Merchant {
     bool manual_payouts_enabled = 54;
     // @inject_tag: json:"mcc_code"
     string mcc_code = 55;
-    // @inject_tag: json:"operating_company_id"
+    // @inject_tag: json:"operating_company_id" faker:"objectIdString"
     string operating_company_id = 56;
     // @inject_tag: json:"merchant_operations_type" validate:"oneof=high-risk low-risk"
     string merchant_operations_type = 57;
@@ -1114,7 +1114,7 @@ message MerchantPaymentMethodIntegration {
 }
 
 message MerchantPaymentMethodIdentification {
-    // @inject_tag: validate:"required,hexadecimal,len=24" json:"id"
+    // @inject_tag: validate:"required,hexadecimal,len=24" json:"id" faker:"objectIdString"
     string id = 1;
     // @inject_tag: validate:"required" json:"name"
     string name = 2;
