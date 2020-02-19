@@ -2254,8 +2254,8 @@ type Merchant struct {
 	ManualPayoutsEnabled bool `protobuf:"varint,54,opt,name=manual_payouts_enabled,json=manualPayoutsEnabled,proto3" json:"manual_payouts_enabled"`
 	// @inject_tag: json:"mcc_code"
 	MccCode string `protobuf:"bytes,55,opt,name=mcc_code,json=mccCode,proto3" json:"mcc_code"`
-	// @inject_tag: json:"operating_company_id"
-	OperatingCompanyId string `protobuf:"bytes,56,opt,name=operating_company_id,json=operatingCompanyId,proto3" json:"operating_company_id"`
+	// @inject_tag: json:"operating_company_id" faker:"objectIdString"
+	OperatingCompanyId string `protobuf:"bytes,56,opt,name=operating_company_id,json=operatingCompanyId,proto3" json:"operating_company_id" faker:"objectIdString"`
 	// @inject_tag: json:"merchant_operations_type" validate:"oneof=high-risk low-risk"
 	MerchantOperationsType string `protobuf:"bytes,57,opt,name=merchant_operations_type,json=merchantOperationsType,proto3" json:"merchant_operations_type" validate:"oneof=high-risk low-risk"`
 	// @inject_tag: json:"dont_charge_vat"
@@ -5603,8 +5603,8 @@ func (m *MerchantPaymentMethodIntegration) GetIntegrated() bool {
 }
 
 type MerchantPaymentMethodIdentification struct {
-	// @inject_tag: validate:"required,hexadecimal,len=24" json:"id"
-	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id" validate:"required,hexadecimal,len=24"`
+	// @inject_tag: validate:"required,hexadecimal,len=24" json:"id" faker:"objectIdString"
+	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id" validate:"required,hexadecimal,len=24" faker:"objectIdString"`
 	// @inject_tag: validate:"required" json:"name"
 	Name                 string   `protobuf:"bytes,2,opt,name=name,proto3" json:"name" validate:"required"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-" bson:"-" structure:"-" validate:"-"`
