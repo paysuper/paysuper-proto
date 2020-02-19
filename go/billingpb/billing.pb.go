@@ -2175,8 +2175,8 @@ func (m *MerchantTariff) GetHomeRegion() string {
 }
 
 type Merchant struct {
-	// @inject_tag: bson:"_id"
-	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty" bson:"_id"`
+	// @inject_tag: bson:"_id" faker:"objectIdString"
+	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty" bson:"_id" faker:"objectIdString"`
 	// @inject_tag: json:"user"
 	User *MerchantUser `protobuf:"bytes,2,opt,name=user,proto3" json:"user"`
 	// @inject_tag: json:"company"
