@@ -1096,7 +1096,7 @@ message MerchantPaymentMethodPerTransactionCommission {
 }
 
 message MerchantPaymentMethodCommissions {
-    // @inject_tag: validate:"omitempty,numeric,gte=0,lte=100" json:"fee"
+    // @inject_tag: validate:"omitempty,numeric,gte=0,lte=100" json:"fee" 
     double fee = 1;
     // @inject_tag: validate:"required" json:"per_transaction"
     MerchantPaymentMethodPerTransactionCommission per_transaction = 2;
