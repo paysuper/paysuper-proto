@@ -14,8 +14,9 @@ import (
 
 import (
 	context "context"
-	client "github.com/micro/go-micro/client"
-	server "github.com/micro/go-micro/server"
+	api "github.com/micro/micro/v3/service/api"
+	client "github.com/micro/micro/v3/service/client"
+	server "github.com/micro/micro/v3/service/server"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -30,9 +31,296 @@ var _ = math.Inf
 const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
 // Reference imports to suppress errors if they are not otherwise used.
+var _ api.Endpoint
 var _ context.Context
 var _ client.Option
 var _ server.Option
+
+// Api Endpoints for Casbin service
+
+func NewCasbinEndpoints() []*api.Endpoint {
+	return []*api.Endpoint{
+		&api.Endpoint{
+			Name:    "Casbin.Enforce",
+			Path:    []string{"/casbin/enforce"},
+			Method:  []string{"POST"},
+			Body:    "*",
+			Handler: "rpc",
+		},
+		&api.Endpoint{
+			Name:    "Casbin.ImportPolicy",
+			Path:    []string{"/casbin/import_policy"},
+			Method:  []string{"POST"},
+			Body:    "*",
+			Handler: "rpc",
+		},
+		&api.Endpoint{
+			Name:    "Casbin.LoadPolicy",
+			Path:    []string{"/casbin/load_policy"},
+			Method:  []string{"GET"},
+			Handler: "rpc",
+		},
+		&api.Endpoint{
+			Name:    "Casbin.SavePolicy",
+			Path:    []string{"/casbin/save_policy"},
+			Method:  []string{"PUT"},
+			Body:    "*",
+			Handler: "rpc",
+		},
+		&api.Endpoint{
+			Name:    "Casbin.AddPolicy",
+			Path:    []string{"/casbin/add_policy"},
+			Method:  []string{"POST"},
+			Body:    "*",
+			Handler: "rpc",
+		},
+		&api.Endpoint{
+			Name:    "Casbin.AddNamedPolicy",
+			Path:    []string{"/casbin/add_named_policy"},
+			Method:  []string{"POST"},
+			Body:    "*",
+			Handler: "rpc",
+		},
+		&api.Endpoint{
+			Name:    "Casbin.RemovePolicy",
+			Path:    []string{"/casbin/remove_policy"},
+			Method:  []string{"DELETE"},
+			Body:    "*",
+			Handler: "rpc",
+		},
+		&api.Endpoint{
+			Name:    "Casbin.RemoveNamedPolicy",
+			Path:    []string{"/casbin/remove_named_policy"},
+			Method:  []string{"DELETE"},
+			Body:    "*",
+			Handler: "rpc",
+		},
+		&api.Endpoint{
+			Name:    "Casbin.RemoveFilteredPolicy",
+			Path:    []string{"/casbin/remove_filtered_policy"},
+			Method:  []string{"DELETE"},
+			Body:    "*",
+			Handler: "rpc",
+		},
+		&api.Endpoint{
+			Name:    "Casbin.RemoveFilteredNamedPolicy",
+			Path:    []string{"/casbin/remove_filtered_named_policy"},
+			Method:  []string{"DELETE"},
+			Body:    "*",
+			Handler: "rpc",
+		},
+		&api.Endpoint{
+			Name:    "Casbin.GetPolicy",
+			Path:    []string{"/casbin/get_policy"},
+			Method:  []string{"GET"},
+			Handler: "rpc",
+		},
+		&api.Endpoint{
+			Name:    "Casbin.GetNamedPolicy",
+			Path:    []string{"/casbin/get_named_policy"},
+			Method:  []string{"GET"},
+			Handler: "rpc",
+		},
+		&api.Endpoint{
+			Name:    "Casbin.GetFilteredPolicy",
+			Path:    []string{"/casbin/get_filtered_policy"},
+			Method:  []string{"GET"},
+			Handler: "rpc",
+		},
+		&api.Endpoint{
+			Name:    "Casbin.GetFilteredNamedPolicy",
+			Path:    []string{"/casbin/get_filtered_named_policy"},
+			Method:  []string{"GET"},
+			Handler: "rpc",
+		},
+		&api.Endpoint{
+			Name:    "Casbin.AddGroupingPolicy",
+			Path:    []string{"/casbin/add_grouping_policy"},
+			Method:  []string{"POST"},
+			Body:    "*",
+			Handler: "rpc",
+		},
+		&api.Endpoint{
+			Name:    "Casbin.AddNamedGroupingPolicy",
+			Path:    []string{"/casbin/add_named_grouping_policy"},
+			Method:  []string{"POST"},
+			Body:    "*",
+			Handler: "rpc",
+		},
+		&api.Endpoint{
+			Name:    "Casbin.RemoveGroupingPolicy",
+			Path:    []string{"/casbin/remove_grouping_policy"},
+			Method:  []string{"DELETE"},
+			Body:    "*",
+			Handler: "rpc",
+		},
+		&api.Endpoint{
+			Name:    "Casbin.RemoveNamedGroupingPolicy",
+			Path:    []string{"/casbin/remove_named_grouping_policy"},
+			Method:  []string{"DELETE"},
+			Body:    "*",
+			Handler: "rpc",
+		},
+		&api.Endpoint{
+			Name:    "Casbin.RemoveFilteredGroupingPolicy",
+			Path:    []string{"/casbin/remove_filtered_grouping_policy"},
+			Method:  []string{"DELETE"},
+			Body:    "*",
+			Handler: "rpc",
+		},
+		&api.Endpoint{
+			Name:    "Casbin.RemoveFilteredNamedGroupingPolicy",
+			Path:    []string{"/casbin/remove_filtered_named_grouping_policy"},
+			Method:  []string{"DELETE"},
+			Body:    "*",
+			Handler: "rpc",
+		},
+		&api.Endpoint{
+			Name:    "Casbin.GetGroupingPolicy",
+			Path:    []string{"/casbin/get_grouping_policy"},
+			Method:  []string{"GET"},
+			Handler: "rpc",
+		},
+		&api.Endpoint{
+			Name:    "Casbin.GetNamedGroupingPolicy",
+			Path:    []string{"/casbin/get_named_grouping_policy"},
+			Method:  []string{"GET"},
+			Handler: "rpc",
+		},
+		&api.Endpoint{
+			Name:    "Casbin.GetFilteredGroupingPolicy",
+			Path:    []string{"/casbin/get_filtered_grouping_policy"},
+			Method:  []string{"GET"},
+			Handler: "rpc",
+		},
+		&api.Endpoint{
+			Name:    "Casbin.GetFilteredNamedGroupingPolicy",
+			Path:    []string{"/casbin/get_filtered_named_grouping_policy"},
+			Method:  []string{"GET"},
+			Handler: "rpc",
+		},
+		&api.Endpoint{
+			Name:    "Casbin.GetAllSubjects",
+			Path:    []string{"/casbin/get_all_subjects"},
+			Method:  []string{"GET"},
+			Handler: "rpc",
+		},
+		&api.Endpoint{
+			Name:    "Casbin.GetAllNamedSubjects",
+			Path:    []string{"/casbin/get_all_named_subjects"},
+			Method:  []string{"GET"},
+			Handler: "rpc",
+		},
+		&api.Endpoint{
+			Name:    "Casbin.GetAllObjects",
+			Path:    []string{"/casbin/get_all_objects"},
+			Method:  []string{"GET"},
+			Handler: "rpc",
+		},
+		&api.Endpoint{
+			Name:    "Casbin.GetAllNamedObjects",
+			Path:    []string{"/casbin/get_all_named_objects"},
+			Method:  []string{"GET"},
+			Handler: "rpc",
+		},
+		&api.Endpoint{
+			Name:    "Casbin.GetAllActions",
+			Path:    []string{"/casbin/get_all_actions"},
+			Method:  []string{"GET"},
+			Handler: "rpc",
+		},
+		&api.Endpoint{
+			Name:    "Casbin.GetAllNamedActions",
+			Path:    []string{"/casbin/get_all_named_actions"},
+			Method:  []string{"GET"},
+			Handler: "rpc",
+		},
+		&api.Endpoint{
+			Name:    "Casbin.GetAllRoles",
+			Path:    []string{"/casbin/get_all_roles"},
+			Method:  []string{"GET"},
+			Handler: "rpc",
+		},
+		&api.Endpoint{
+			Name:    "Casbin.GetAllNamedRoles",
+			Path:    []string{"/casbin/get_all_named_roles"},
+			Method:  []string{"GET"},
+			Handler: "rpc",
+		},
+		&api.Endpoint{
+			Name:    "Casbin.HasPolicy",
+			Path:    []string{"/casbin/has_policy"},
+			Method:  []string{"GET"},
+			Handler: "rpc",
+		},
+		&api.Endpoint{
+			Name:    "Casbin.HasNamedPolicy",
+			Path:    []string{"/casbin/has_named_policy"},
+			Method:  []string{"GET"},
+			Handler: "rpc",
+		},
+		&api.Endpoint{
+			Name:    "Casbin.HasGroupingPolicy",
+			Path:    []string{"/casbin/has_grouping_policy"},
+			Method:  []string{"GET"},
+			Handler: "rpc",
+		},
+		&api.Endpoint{
+			Name:    "Casbin.HasNamedGroupingPolicy",
+			Path:    []string{"/casbin/has_named_grouping_policy"},
+			Method:  []string{"GET"},
+			Handler: "rpc",
+		},
+		&api.Endpoint{
+			Name:    "Casbin.AddRoleForUser",
+			Path:    []string{"/casbin/add_role_for_user"},
+			Method:  []string{"GET"},
+			Handler: "rpc",
+		},
+		&api.Endpoint{
+			Name:    "Casbin.DeleteRoleForUser",
+			Path:    []string{"/casbin/delete_role_for_user"},
+			Method:  []string{"GET"},
+			Handler: "rpc",
+		},
+		&api.Endpoint{
+			Name:    "Casbin.DeleteUser",
+			Path:    []string{"/casbin/delete_user"},
+			Method:  []string{"GET"},
+			Handler: "rpc",
+		},
+		&api.Endpoint{
+			Name:    "Casbin.GetRolesForUser",
+			Path:    []string{"/casbin/get_roles_for_user"},
+			Method:  []string{"GET"},
+			Handler: "rpc",
+		},
+		&api.Endpoint{
+			Name:    "Casbin.GetImplicitRolesForUser",
+			Path:    []string{"/casbin/get_implicit_roles_for_user"},
+			Method:  []string{"GET"},
+			Handler: "rpc",
+		},
+		&api.Endpoint{
+			Name:    "Casbin.GetUsersForRole",
+			Path:    []string{"/casbin/get_users_for_role"},
+			Method:  []string{"GET"},
+			Handler: "rpc",
+		},
+		&api.Endpoint{
+			Name:    "Casbin.GetPermissionsForUser",
+			Path:    []string{"/casbin/get_permissions_for_user"},
+			Method:  []string{"GET"},
+			Handler: "rpc",
+		},
+		&api.Endpoint{
+			Name:    "Casbin.GetImplicitPermissionsForUser",
+			Path:    []string{"/casbin/get_implicit_permissions_for_user"},
+			Method:  []string{"GET"},
+			Handler: "rpc",
+		},
+	}
+}
 
 // Client API for Casbin service
 
@@ -89,12 +377,6 @@ type casbinService struct {
 }
 
 func NewCasbinService(name string, c client.Client) CasbinService {
-	if c == nil {
-		c = client.NewClient()
-	}
-	if len(name) == 0 {
-		name = "casbinpb"
-	}
 	return &casbinService{
 		c:    c,
 		name: name,
@@ -641,6 +923,285 @@ func RegisterCasbinHandler(s server.Server, hdlr CasbinHandler, opts ...server.H
 		casbin
 	}
 	h := &casbinHandler{hdlr}
+	opts = append(opts, api.WithEndpoint(&api.Endpoint{
+		Name:    "Casbin.Enforce",
+		Path:    []string{"/casbin/enforce"},
+		Method:  []string{"POST"},
+		Body:    "*",
+		Handler: "rpc",
+	}))
+	opts = append(opts, api.WithEndpoint(&api.Endpoint{
+		Name:    "Casbin.ImportPolicy",
+		Path:    []string{"/casbin/import_policy"},
+		Method:  []string{"POST"},
+		Body:    "*",
+		Handler: "rpc",
+	}))
+	opts = append(opts, api.WithEndpoint(&api.Endpoint{
+		Name:    "Casbin.LoadPolicy",
+		Path:    []string{"/casbin/load_policy"},
+		Method:  []string{"GET"},
+		Handler: "rpc",
+	}))
+	opts = append(opts, api.WithEndpoint(&api.Endpoint{
+		Name:    "Casbin.SavePolicy",
+		Path:    []string{"/casbin/save_policy"},
+		Method:  []string{"PUT"},
+		Body:    "*",
+		Handler: "rpc",
+	}))
+	opts = append(opts, api.WithEndpoint(&api.Endpoint{
+		Name:    "Casbin.AddPolicy",
+		Path:    []string{"/casbin/add_policy"},
+		Method:  []string{"POST"},
+		Body:    "*",
+		Handler: "rpc",
+	}))
+	opts = append(opts, api.WithEndpoint(&api.Endpoint{
+		Name:    "Casbin.AddNamedPolicy",
+		Path:    []string{"/casbin/add_named_policy"},
+		Method:  []string{"POST"},
+		Body:    "*",
+		Handler: "rpc",
+	}))
+	opts = append(opts, api.WithEndpoint(&api.Endpoint{
+		Name:    "Casbin.RemovePolicy",
+		Path:    []string{"/casbin/remove_policy"},
+		Method:  []string{"DELETE"},
+		Body:    "*",
+		Handler: "rpc",
+	}))
+	opts = append(opts, api.WithEndpoint(&api.Endpoint{
+		Name:    "Casbin.RemoveNamedPolicy",
+		Path:    []string{"/casbin/remove_named_policy"},
+		Method:  []string{"DELETE"},
+		Body:    "*",
+		Handler: "rpc",
+	}))
+	opts = append(opts, api.WithEndpoint(&api.Endpoint{
+		Name:    "Casbin.RemoveFilteredPolicy",
+		Path:    []string{"/casbin/remove_filtered_policy"},
+		Method:  []string{"DELETE"},
+		Body:    "*",
+		Handler: "rpc",
+	}))
+	opts = append(opts, api.WithEndpoint(&api.Endpoint{
+		Name:    "Casbin.RemoveFilteredNamedPolicy",
+		Path:    []string{"/casbin/remove_filtered_named_policy"},
+		Method:  []string{"DELETE"},
+		Body:    "*",
+		Handler: "rpc",
+	}))
+	opts = append(opts, api.WithEndpoint(&api.Endpoint{
+		Name:    "Casbin.GetPolicy",
+		Path:    []string{"/casbin/get_policy"},
+		Method:  []string{"GET"},
+		Handler: "rpc",
+	}))
+	opts = append(opts, api.WithEndpoint(&api.Endpoint{
+		Name:    "Casbin.GetNamedPolicy",
+		Path:    []string{"/casbin/get_named_policy"},
+		Method:  []string{"GET"},
+		Handler: "rpc",
+	}))
+	opts = append(opts, api.WithEndpoint(&api.Endpoint{
+		Name:    "Casbin.GetFilteredPolicy",
+		Path:    []string{"/casbin/get_filtered_policy"},
+		Method:  []string{"GET"},
+		Handler: "rpc",
+	}))
+	opts = append(opts, api.WithEndpoint(&api.Endpoint{
+		Name:    "Casbin.GetFilteredNamedPolicy",
+		Path:    []string{"/casbin/get_filtered_named_policy"},
+		Method:  []string{"GET"},
+		Handler: "rpc",
+	}))
+	opts = append(opts, api.WithEndpoint(&api.Endpoint{
+		Name:    "Casbin.AddGroupingPolicy",
+		Path:    []string{"/casbin/add_grouping_policy"},
+		Method:  []string{"POST"},
+		Body:    "*",
+		Handler: "rpc",
+	}))
+	opts = append(opts, api.WithEndpoint(&api.Endpoint{
+		Name:    "Casbin.AddNamedGroupingPolicy",
+		Path:    []string{"/casbin/add_named_grouping_policy"},
+		Method:  []string{"POST"},
+		Body:    "*",
+		Handler: "rpc",
+	}))
+	opts = append(opts, api.WithEndpoint(&api.Endpoint{
+		Name:    "Casbin.RemoveGroupingPolicy",
+		Path:    []string{"/casbin/remove_grouping_policy"},
+		Method:  []string{"DELETE"},
+		Body:    "*",
+		Handler: "rpc",
+	}))
+	opts = append(opts, api.WithEndpoint(&api.Endpoint{
+		Name:    "Casbin.RemoveNamedGroupingPolicy",
+		Path:    []string{"/casbin/remove_named_grouping_policy"},
+		Method:  []string{"DELETE"},
+		Body:    "*",
+		Handler: "rpc",
+	}))
+	opts = append(opts, api.WithEndpoint(&api.Endpoint{
+		Name:    "Casbin.RemoveFilteredGroupingPolicy",
+		Path:    []string{"/casbin/remove_filtered_grouping_policy"},
+		Method:  []string{"DELETE"},
+		Body:    "*",
+		Handler: "rpc",
+	}))
+	opts = append(opts, api.WithEndpoint(&api.Endpoint{
+		Name:    "Casbin.RemoveFilteredNamedGroupingPolicy",
+		Path:    []string{"/casbin/remove_filtered_named_grouping_policy"},
+		Method:  []string{"DELETE"},
+		Body:    "*",
+		Handler: "rpc",
+	}))
+	opts = append(opts, api.WithEndpoint(&api.Endpoint{
+		Name:    "Casbin.GetGroupingPolicy",
+		Path:    []string{"/casbin/get_grouping_policy"},
+		Method:  []string{"GET"},
+		Handler: "rpc",
+	}))
+	opts = append(opts, api.WithEndpoint(&api.Endpoint{
+		Name:    "Casbin.GetNamedGroupingPolicy",
+		Path:    []string{"/casbin/get_named_grouping_policy"},
+		Method:  []string{"GET"},
+		Handler: "rpc",
+	}))
+	opts = append(opts, api.WithEndpoint(&api.Endpoint{
+		Name:    "Casbin.GetFilteredGroupingPolicy",
+		Path:    []string{"/casbin/get_filtered_grouping_policy"},
+		Method:  []string{"GET"},
+		Handler: "rpc",
+	}))
+	opts = append(opts, api.WithEndpoint(&api.Endpoint{
+		Name:    "Casbin.GetFilteredNamedGroupingPolicy",
+		Path:    []string{"/casbin/get_filtered_named_grouping_policy"},
+		Method:  []string{"GET"},
+		Handler: "rpc",
+	}))
+	opts = append(opts, api.WithEndpoint(&api.Endpoint{
+		Name:    "Casbin.GetAllSubjects",
+		Path:    []string{"/casbin/get_all_subjects"},
+		Method:  []string{"GET"},
+		Handler: "rpc",
+	}))
+	opts = append(opts, api.WithEndpoint(&api.Endpoint{
+		Name:    "Casbin.GetAllNamedSubjects",
+		Path:    []string{"/casbin/get_all_named_subjects"},
+		Method:  []string{"GET"},
+		Handler: "rpc",
+	}))
+	opts = append(opts, api.WithEndpoint(&api.Endpoint{
+		Name:    "Casbin.GetAllObjects",
+		Path:    []string{"/casbin/get_all_objects"},
+		Method:  []string{"GET"},
+		Handler: "rpc",
+	}))
+	opts = append(opts, api.WithEndpoint(&api.Endpoint{
+		Name:    "Casbin.GetAllNamedObjects",
+		Path:    []string{"/casbin/get_all_named_objects"},
+		Method:  []string{"GET"},
+		Handler: "rpc",
+	}))
+	opts = append(opts, api.WithEndpoint(&api.Endpoint{
+		Name:    "Casbin.GetAllActions",
+		Path:    []string{"/casbin/get_all_actions"},
+		Method:  []string{"GET"},
+		Handler: "rpc",
+	}))
+	opts = append(opts, api.WithEndpoint(&api.Endpoint{
+		Name:    "Casbin.GetAllNamedActions",
+		Path:    []string{"/casbin/get_all_named_actions"},
+		Method:  []string{"GET"},
+		Handler: "rpc",
+	}))
+	opts = append(opts, api.WithEndpoint(&api.Endpoint{
+		Name:    "Casbin.GetAllRoles",
+		Path:    []string{"/casbin/get_all_roles"},
+		Method:  []string{"GET"},
+		Handler: "rpc",
+	}))
+	opts = append(opts, api.WithEndpoint(&api.Endpoint{
+		Name:    "Casbin.GetAllNamedRoles",
+		Path:    []string{"/casbin/get_all_named_roles"},
+		Method:  []string{"GET"},
+		Handler: "rpc",
+	}))
+	opts = append(opts, api.WithEndpoint(&api.Endpoint{
+		Name:    "Casbin.HasPolicy",
+		Path:    []string{"/casbin/has_policy"},
+		Method:  []string{"GET"},
+		Handler: "rpc",
+	}))
+	opts = append(opts, api.WithEndpoint(&api.Endpoint{
+		Name:    "Casbin.HasNamedPolicy",
+		Path:    []string{"/casbin/has_named_policy"},
+		Method:  []string{"GET"},
+		Handler: "rpc",
+	}))
+	opts = append(opts, api.WithEndpoint(&api.Endpoint{
+		Name:    "Casbin.HasGroupingPolicy",
+		Path:    []string{"/casbin/has_grouping_policy"},
+		Method:  []string{"GET"},
+		Handler: "rpc",
+	}))
+	opts = append(opts, api.WithEndpoint(&api.Endpoint{
+		Name:    "Casbin.HasNamedGroupingPolicy",
+		Path:    []string{"/casbin/has_named_grouping_policy"},
+		Method:  []string{"GET"},
+		Handler: "rpc",
+	}))
+	opts = append(opts, api.WithEndpoint(&api.Endpoint{
+		Name:    "Casbin.AddRoleForUser",
+		Path:    []string{"/casbin/add_role_for_user"},
+		Method:  []string{"GET"},
+		Handler: "rpc",
+	}))
+	opts = append(opts, api.WithEndpoint(&api.Endpoint{
+		Name:    "Casbin.DeleteRoleForUser",
+		Path:    []string{"/casbin/delete_role_for_user"},
+		Method:  []string{"GET"},
+		Handler: "rpc",
+	}))
+	opts = append(opts, api.WithEndpoint(&api.Endpoint{
+		Name:    "Casbin.DeleteUser",
+		Path:    []string{"/casbin/delete_user"},
+		Method:  []string{"GET"},
+		Handler: "rpc",
+	}))
+	opts = append(opts, api.WithEndpoint(&api.Endpoint{
+		Name:    "Casbin.GetRolesForUser",
+		Path:    []string{"/casbin/get_roles_for_user"},
+		Method:  []string{"GET"},
+		Handler: "rpc",
+	}))
+	opts = append(opts, api.WithEndpoint(&api.Endpoint{
+		Name:    "Casbin.GetImplicitRolesForUser",
+		Path:    []string{"/casbin/get_implicit_roles_for_user"},
+		Method:  []string{"GET"},
+		Handler: "rpc",
+	}))
+	opts = append(opts, api.WithEndpoint(&api.Endpoint{
+		Name:    "Casbin.GetUsersForRole",
+		Path:    []string{"/casbin/get_users_for_role"},
+		Method:  []string{"GET"},
+		Handler: "rpc",
+	}))
+	opts = append(opts, api.WithEndpoint(&api.Endpoint{
+		Name:    "Casbin.GetPermissionsForUser",
+		Path:    []string{"/casbin/get_permissions_for_user"},
+		Method:  []string{"GET"},
+		Handler: "rpc",
+	}))
+	opts = append(opts, api.WithEndpoint(&api.Endpoint{
+		Name:    "Casbin.GetImplicitPermissionsForUser",
+		Path:    []string{"/casbin/get_implicit_permissions_for_user"},
+		Method:  []string{"GET"},
+		Handler: "rpc",
+	}))
 	return s.Handle(s.NewHandler(&Casbin{h}, opts...))
 }
 

@@ -1,7 +1,7 @@
 language: go
 sudo: false
 go:
-- 1.14.x
+- 1.15.x
 
 env:
   global:
@@ -13,11 +13,11 @@ install:
   - unzip "protoc-${PROTOBUF_VERSION}-linux-x86_64.zip" -d protoc
   - export PATH="$(pwd)/protoc/bin:$PATH"
   - export GOBIN=$GOPATH/bin && export PATH=$PATH:$GOROOT:$GOPATH:$GOBIN
-  - go get -u github.com/grpc-ecosystem/grpc-gateway/protoc-gen-grpc-gateway@v1.14.7
+  - go get -u github.com/grpc-ecosystem/grpc-gateway/protoc-gen-grpc-gateway
   - go get -u github.com/grpc-ecosystem/grpc-gateway/protoc-gen-swagger
   - go get -u github.com/golang/protobuf/protoc-gen-go
-  - go get -u github.com/micro/protoc-gen-micro
-  - go get -d github.com/envoyproxy/protoc-gen-validate@v0.4.1
+  - go get -u github.com/asim/protoc-gen-nitro/v3
+  - go get -d github.com/envoyproxy/protoc-gen-validate
   - go get github.com/favadi/protoc-go-inject-tag
   - go get github.com/vektra/mockery/v2/.../
 

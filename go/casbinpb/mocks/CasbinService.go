@@ -3,7 +3,7 @@
 package mocks
 
 import (
-	client "github.com/micro/go-micro/client"
+	client "github.com/micro/micro/v3/service/client"
 	casbinpb "github.com/paysuper/paysuper-proto/go/casbinpb"
 
 	context "context"

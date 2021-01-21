@@ -5,7 +5,7 @@ package mocks
 import (
 	context "context"
 
-	client "github.com/micro/go-micro/client"
+	client "github.com/micro/micro/v3/service/client"
 
 	currenciespb "github.com/paysuper/paysuper-proto/go/currenciespb"
 
