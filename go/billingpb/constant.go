@@ -285,6 +285,7 @@ var (
 		recurringpb.OrderStatusChargeback:                  recurringpb.OrderPublicStatusChargeback,
 		recurringpb.OrderStatusItemReplaced:                recurringpb.OrderPublicStatusProcessed,
 		recurringpb.OrderStatusProjectInProgress:           recurringpb.OrderPublicStatusPending,
+		recurringpb.OrderStatusPaymentSystemAuthorized:     recurringpb.OrderPublicStatusAuthorized,
 	}
 
 	HomeRegions = map[string]string{

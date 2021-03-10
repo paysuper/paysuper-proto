@@ -4696,7 +4696,7 @@ message RecurringPlan {
   RecurringPlanPeriod trial = 10;
   // @inject_tag: json:"grace_period" validate:"omitempty"
   //
-  // Trial period details.
+  // Grace period details.
   RecurringPlanPeriod grace_period = 11;
   // @inject_tag: json:"tags" validate:"omitempty"
   //
@@ -4718,6 +4718,10 @@ message RecurringPlan {
   //
   // The date of the recurring plan deleted.
   google.protobuf.Timestamp deleted_at = 16;
+  // @inject_tag: json:"has_grace_period" validate:"omitempty"
+  //
+  // True if recurring plan has grace period.
+  bool has_grace_period = 17;
 }
 
 message RecurringPlanCharge {

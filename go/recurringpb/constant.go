@@ -17,6 +17,7 @@ const (
 	OrderPublicStatusRefunded   = "refunded"
 	OrderPublicStatusChargeback = "chargeback"
 	OrderPublicStatusPending    = "pending"
+	OrderPublicStatusAuthorized = "authorized"
 
 	OrderStatusNew                         = 0
 	OrderStatusPaymentSystemCreate         = 1
@@ -32,6 +33,7 @@ const (
 	OrderStatusPaymentSystemDeclined       = 11
 	OrderStatusPaymentSystemCanceled       = 12
 	OrderStatusItemReplaced                = 13
+	OrderStatusPaymentSystemAuthorized     = 14
 
 	PaymentSystemCardPayDateFormat  = "2006-01-02T15:04:05Z"
 	PaymentSystemGroupAliasBankCard = "BANKCARD"
