@@ -19,7 +19,7 @@ message CreatePaylinkRequest {
     //
     // The list of the payment link's products.
     repeated string products = 3;
-    //@inject_tag: json:"merchant_id" validate:"required,hexadecimal,len=24" required:"true"
+    //@inject_tag: json:"merchant_id" validate:"required,hexadecimal,len=24" required:"true" param:"merchant_id"
     //
     // The unique identifier for the merchant.
     string merchant_id = 4;

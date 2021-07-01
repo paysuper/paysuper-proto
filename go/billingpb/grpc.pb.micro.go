@@ -132,7 +132,7 @@ type BillingService interface {
 	DeleteMoneyBackCostMerchant(ctx context.Context, in *PaymentCostDeleteRequest, opts ...client.CallOption) (*ResponseError, error)
 	CreateAccountingEntry(ctx context.Context, in *CreateAccountingEntryRequest, opts ...client.CallOption) (*CreateAccountingEntryResponse, error)
 	GetUserProfile(ctx context.Context, in *GetUserProfileRequest, opts ...client.CallOption) (*GetUserProfileResponse, error)
-	CreateOrUpdateUserProfile(ctx context.Context, in *UserProfile, opts ...client.CallOption) (*GetUserProfileResponse, error)
+	CreateOrUpdateUserProfile(ctx context.Context, in *UserProfile, opts ...client.CallOption) (*CreateOrUpdateUserProfileResponse, error)
 	ConfirmUserEmail(ctx context.Context, in *ConfirmUserEmailRequest, opts ...client.CallOption) (*ConfirmUserEmailResponse, error)
 	CreatePageReview(ctx context.Context, in *CreatePageReviewRequest, opts ...client.CallOption) (*CheckProjectRequestSignatureResponse, error)
 	CreateRoyaltyReport(ctx context.Context, in *CreateRoyaltyReportRequest, opts ...client.CallOption) (*CreateRoyaltyReportRequest, error)
@@ -1239,9 +1239,9 @@ func (c *billingService) GetUserProfile(ctx context.Context, in *GetUserProfileR
 	return out, nil
 }
 
-func (c *billingService) CreateOrUpdateUserProfile(ctx context.Context, in *UserProfile, opts ...client.CallOption) (*GetUserProfileResponse, error) {
+func (c *billingService) CreateOrUpdateUserProfile(ctx context.Context, in *UserProfile, opts ...client.CallOption) (*CreateOrUpdateUserProfileResponse, error) {
 	req := c.c.NewRequest(c.name, "BillingService.CreateOrUpdateUserProfile", in)
-	out := new(GetUserProfileResponse)
+	out := new(CreateOrUpdateUserProfileResponse)
 	err := c.c.Call(ctx, req, out, opts...)
 	if err != nil {
 		return nil, err
@@ -2509,7 +2509,7 @@ type BillingServiceHandler interface {
 	DeleteMoneyBackCostMerchant(context.Context, *PaymentCostDeleteRequest, *ResponseError) error
 	CreateAccountingEntry(context.Context, *CreateAccountingEntryRequest, *CreateAccountingEntryResponse) error
 	GetUserProfile(context.Context, *GetUserProfileRequest, *GetUserProfileResponse) error
-	CreateOrUpdateUserProfile(context.Context, *UserProfile, *GetUserProfileResponse) error
+	CreateOrUpdateUserProfile(context.Context, *UserProfile, *CreateOrUpdateUserProfileResponse) error
 	ConfirmUserEmail(context.Context, *ConfirmUserEmailRequest, *ConfirmUserEmailResponse) error
 	CreatePageReview(context.Context, *CreatePageReviewRequest, *CheckProjectRequestSignatureResponse) error
 	CreateRoyaltyReport(context.Context, *CreateRoyaltyReportRequest, *CreateRoyaltyReportRequest) error
@@ -2727,7 +2727,7 @@ func RegisterBillingServiceHandler(s server.Server, hdlr BillingServiceHandler, 
 		DeleteMoneyBackCostMerchant(ctx context.Context, in *PaymentCostDeleteRequest, out *ResponseError) error
 		CreateAccountingEntry(ctx context.Context, in *CreateAccountingEntryRequest, out *CreateAccountingEntryResponse) error
 		GetUserProfile(ctx context.Context, in *GetUserProfileRequest, out *GetUserProfileResponse) error
-		CreateOrUpdateUserProfile(ctx context.Context, in *UserProfile, out *GetUserProfileResponse) error
+		CreateOrUpdateUserProfile(ctx context.Context, in *UserProfile, out *CreateOrUpdateUserProfileResponse) error
 		ConfirmUserEmail(ctx context.Context, in *ConfirmUserEmailRequest, out *ConfirmUserEmailResponse) error
 		CreatePageReview(ctx context.Context, in *CreatePageReviewRequest, out *CheckProjectRequestSignatureResponse) error
 		CreateRoyaltyReport(ctx context.Context, in *CreateRoyaltyReportRequest, out *CreateRoyaltyReportRequest) error
@@ -3244,7 +3244,7 @@ func (h *billingServiceHandler) GetUserProfile(ctx context.Context, in *GetUserP
 	return h.BillingServiceHandler.GetUserProfile(ctx, in, out)
 }
 
-func (h *billingServiceHandler) CreateOrUpdateUserProfile(ctx context.Context, in *UserProfile, out *GetUserProfileResponse) error {
+func (h *billingServiceHandler) CreateOrUpdateUserProfile(ctx context.Context, in *UserProfile, out *CreateOrUpdateUserProfileResponse) error {
 	return h.BillingServiceHandler.CreateOrUpdateUserProfile(ctx, in, out)
 }
 

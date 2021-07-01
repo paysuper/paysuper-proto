@@ -917,7 +917,7 @@ func (_m *BillingService) CreateOrUpdateProduct(ctx context.Context, in *billing
 }
 
 // CreateOrUpdateUserProfile provides a mock function with given fields: ctx, in, opts
-func (_m *BillingService) CreateOrUpdateUserProfile(ctx context.Context, in *billingpb.UserProfile, opts ...client.CallOption) (*billingpb.GetUserProfileResponse, error) {
+func (_m *BillingService) CreateOrUpdateUserProfile(ctx context.Context, in *billingpb.UserProfile, opts ...client.CallOption) (*billingpb.CreateOrUpdateUserProfileResponse, error) {
 	_va := make([]interface{}, len(opts))
 	for _i := range opts {
 		_va[_i] = opts[_i]
@@ -927,12 +927,12 @@ func (_m *BillingService) CreateOrUpdateUserProfile(ctx context.Context, in *bil
 	_ca = append(_ca, _va...)
 	ret := _m.Called(_ca...)
 
-	var r0 *billingpb.GetUserProfileResponse
-	if rf, ok := ret.Get(0).(func(context.Context, *billingpb.UserProfile, ...client.CallOption) *billingpb.GetUserProfileResponse); ok {
+	var r0 *billingpb.CreateOrUpdateUserProfileResponse
+	if rf, ok := ret.Get(0).(func(context.Context, *billingpb.UserProfile, ...client.CallOption) *billingpb.CreateOrUpdateUserProfileResponse); ok {
 		r0 = rf(ctx, in, opts...)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*billingpb.GetUserProfileResponse)
+			r0 = ret.Get(0).(*billingpb.CreateOrUpdateUserProfileResponse)
 		}
 	}
 

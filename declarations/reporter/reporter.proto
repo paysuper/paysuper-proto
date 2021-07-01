@@ -43,7 +43,7 @@ message ReportFile {
     string id = 1;
     // @inject_tag: json:"-" validate:"required,hexadecimal,len=24"
     string user_id = 2;
-    // @inject_tag: json:"-" validate:"required,hexadecimal,len=24"
+    // @inject_tag: json:"-" validate:"required,hexadecimal,len=24" param:"merchant_id"
     string merchant_id = 3;
     // @inject_tag: json:"report_type" validate:"required,oneof=transactions vat vat_transactions royalty royalty_transactions payout agreement act_of_completion"
     //

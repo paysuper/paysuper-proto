@@ -609,10 +609,10 @@ type Project struct {
 	//
 	// The unique identifier for the project.
 	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id" validate:"omitempty,hexadecimal,len=24" faker:"objectIdString"`
-	// @inject_tag: json:"merchant_id" validate:"required,hexadecimal,len=24" required:"true" faker:"objectIdString"
+	// @inject_tag: json:"merchant_id" validate:"required,hexadecimal,len=24" required:"true" faker:"objectIdString" param:"merchant_id"
 	//
 	// The unique identifier for the project's merchant.
-	MerchantId string `protobuf:"bytes,2,opt,name=merchant_id,json=merchantId,proto3" json:"merchant_id" validate:"required,hexadecimal,len=24" required:"true" faker:"objectIdString"`
+	MerchantId string `protobuf:"bytes,2,opt,name=merchant_id,json=merchantId,proto3" json:"merchant_id" validate:"required,hexadecimal,len=24" required:"true" faker:"objectIdString" param:"merchant_id"`
 	// @inject_tag: json:"name" validate:"required" required:"true"
 	//
 	// The list of the project's localized names.
@@ -18625,10 +18625,10 @@ type MerchantDocument struct {
 	//
 	// The unique identifier for the merchant document.
 	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id" validate:"omitempty,hexadecimal,len=24" faker:"objectIdString"`
-	// @inject_tag: json:"merchant_id" validate:"required,hexadecimal,len=24" faker:"objectIdString"
+	// @inject_tag: json:"merchant_id" validate:"required,hexadecimal,len=24" faker:"objectIdString" param:"merchant_id"
 	//
 	// The merchant identifier for the document.
-	MerchantId string `protobuf:"bytes,2,opt,name=merchant_id,json=merchantId,proto3" json:"merchant_id" validate:"required,hexadecimal,len=24" faker:"objectIdString"`
+	MerchantId string `protobuf:"bytes,2,opt,name=merchant_id,json=merchantId,proto3" json:"merchant_id" validate:"required,hexadecimal,len=24" faker:"objectIdString" param:"merchant_id"`
 	// @inject_tag: json:"user_id" validate:"required,hexadecimal,len=24" faker:"objectIdString"
 	//
 	// ID of the user who added the document.

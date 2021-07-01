@@ -38,10 +38,10 @@ type CreatePaylinkRequest struct {
 	//
 	// The list of the payment link's products.
 	Products []string `protobuf:"bytes,3,rep,name=products,proto3" json:"products" validate:"required,gte=1,dive,hexadecimal,len=24" required:"true"`
-	//@inject_tag: json:"merchant_id" validate:"required,hexadecimal,len=24" required:"true"
+	//@inject_tag: json:"merchant_id" validate:"required,hexadecimal,len=24" required:"true" param:"merchant_id"
 	//
 	// The unique identifier for the merchant.
-	MerchantId string `protobuf:"bytes,4,opt,name=merchant_id,json=merchantId,proto3" json:"merchant_id" validate:"required,hexadecimal,len=24" required:"true"`
+	MerchantId string `protobuf:"bytes,4,opt,name=merchant_id,json=merchantId,proto3" json:"merchant_id" validate:"required,hexadecimal,len=24" required:"true" param:"merchant_id"`
 	//@inject_tag: json:"project_id" validate:"required,hexadecimal,len=24" required:"true"
 	//
 	// The unique identifier for the project.

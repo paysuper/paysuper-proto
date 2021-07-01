@@ -174,8 +174,8 @@ type ReportFile struct {
 	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"-" bson:"_id"`
 	// @inject_tag: json:"-" validate:"required,hexadecimal,len=24"
 	UserId string `protobuf:"bytes,2,opt,name=user_id,json=userId,proto3" json:"-" validate:"required,hexadecimal,len=24"`
-	// @inject_tag: json:"-" validate:"required,hexadecimal,len=24"
-	MerchantId string `protobuf:"bytes,3,opt,name=merchant_id,json=merchantId,proto3" json:"-" validate:"required,hexadecimal,len=24"`
+	// @inject_tag: json:"-" validate:"required,hexadecimal,len=24" param:"merchant_id"
+	MerchantId string `protobuf:"bytes,3,opt,name=merchant_id,json=merchantId,proto3" json:"-" validate:"required,hexadecimal,len=24" param:"merchant_id"`
 	// @inject_tag: json:"report_type" validate:"required,oneof=transactions vat vat_transactions royalty royalty_transactions payout agreement act_of_completion"
 	//
 	// The report type. Available values: transactions, vat, vat_transactions, royalty, royalty_transactions, payout, agreement.
